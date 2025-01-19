@@ -6,3 +6,73 @@ inherit_gem: { rubocop-rails-omakase: rubocop.yml }
 # # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
 # Layout/SpaceInsideArrayLiteralBrackets:
 #   Enabled: false
+AllCops:
+  # Target only Ruby files
+  TargetRubyVersion: 3.0
+  NewCops: disable
+  
+  # Exclude directories and files from being analyzed
+  Exclude:
+    - bin/**/*
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+# Naming/FileName configures the naming of files.
+Naming/FileName:
+  Enabled: true
+  # Enforces snake_case file names for Ruby files
+  Include:
+    - '**/*.rb'
+
+# Layout/TrailingWhitespace configures trailing whitespace checks.
+Layout/TrailingWhitespace:
+  Enabled: true
+
+# Style/Documentation configures the styling of code documentation.
+Style/Documentation:
+  Enabled: false
+  # Cambia este valor para cambiar el estilo de documentación requerido
+  StyleGuide: yard
+
+# Metrics/CyclomaticComplexity and Metrics/PerceivedComplexity are disabled here,
+# but consider keeping an eye on complex methods and refactor them when necessary.
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+# Metrics/LineLength configures maximum line length.
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+
+Metrics/BlockLength:
+  Max: 100
+
+# Style/StringLiterals configures string literal styling.
+Style/StringLiterals:
+  Enabled: true
+  # Prefer single-quoted strings
+  EnforcedStyle: single_quotes
+
+# Style/TrailingCommaInArguments configures trailing commas in method arguments.
+Style/TrailingCommaInArguments:
+  Enabled: true
+
+# Style/EmptyLinesAroundBlockBody configures empty lines around block bodies.
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: true
+
+# Style/FrozenStringLiteralComment configures the frozen string literal comment.
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  # Enforce the comment at the top of each Ruby file
+  EnforcedStyle: always
+
+# Layout/EmptyLineAfterMagicComment configures empty lines after magic comments.
+Layout/EmptyLineAfterMagicComment:
+  Enabled: true
+
+# Metrics/MethodLength configures maximum method length.
+Metrics/MethodLength:
+  Enabled: true
+  Max: 15
