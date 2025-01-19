@@ -1,24 +1,53 @@
-# README
+# Restoration CRM
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Restoration CRM is a Ruby on Rails application designed to assist Restoration Church in managing its administrative and operational tasks efficiently. The goal is to streamline processes and provide tools for better management of church activities and resources.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Ruby Version
+- Ruby 3.4.1
+- Rails 8.0.1
 
-* System dependencies
+### System Dependencies
+- PostgreSQL (pg gem required)
+- RSpec for testing (`rspec-rails`)
+- Other dependencies can be found in the `Gemfile`.
 
-* Configuration
+### Installation
+1. Clone the repository:
+   ```bash
+   git clone git@github.com:FTorrenegraG/restoration-crm.git
+   cd restoration-crm
+   ```
 
-* Database creation
+2. Install dependencies:
+   ```bash
+   bundle install
+   ```
 
-* Database initialization
+3. Configure the database:
+   Update `config/database.yml` with your PostgreSQL credentials.
 
-* How to run the test suite
+4. Set up the database:
+   ```bash
+   rails db:create db:migrate db:seed
+   ```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Running the Application
+Start the Rails server:
+```bash
+rails server
+```
+Access the application at [http://localhost:3000](http://localhost:3000).
 
-* Deployment instructions
+### Testing
+Run the test suite with RSpec:
+```bash
+bundle exec rspec
+```
 
-* ...
+### Deployment
+1. Ensure all migrations are up-to-date:
+   ```bash
+   rails db:migrate
+   ```
