@@ -7,7 +7,7 @@ RSpec.describe MinistryRole, type: :model do
     described_class.create!(name: "Role 1", description: "Test Role", uni_key: "unique_key", ministry: ministry)
   end
 
-  it { should validate_uniqueness_of(:uni_key).scoped_to(:ministry_id) }
+  it { should validate_uniqueness_of(:uni_key) }
 
   it { should belong_to(:ministry) }
   it { should validate_presence_of(:name) }
