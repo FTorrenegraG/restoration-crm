@@ -64,9 +64,7 @@ Layout/EmptyLinesAroundBlockBody:
 
 # Style/FrozenStringLiteralComment configures the frozen string literal comment.
 Style/FrozenStringLiteralComment:
-  Enabled: true
-  # Enforce the comment at the top of each Ruby file
-  EnforcedStyle: always
+  Enabled: false
 
 # Layout/EmptyLineAfterMagicComment configures empty lines after magic comments.
 Layout/EmptyLineAfterMagicComment:
