@@ -43,8 +43,9 @@ gem 'thruster', require: false
 # gem "image_processing", "~> 1.2"
 
 
-gem 'activeadmin'
+gem 'activeadmin', '4.0.0.beta15'
 gem 'sprockets-rails'
+gem 'cssbundling-rails'
 gem 'sassc'
 
 
