@@ -1,0 +1,34 @@
+class <%= class_name %>Policy
+  attr_reader :user, :record
+
+  def initialize(user, record)
+    @user = user
+    @record = record
+  end
+
+  def index?
+    user_has_permission?
+  end
+
+  def show?
+    user_has_permission?
+  end
+
+  def create?
+    user_has_permission?
+  end
+
+  def update?
+    user_has_permission?
+  end
+
+  def destroy?
+    user_has_permission?
+  end
+
+  private
+
+  def user_has_permission?
+    user&.ministry_role&.uni_key == 'restoration-crm-administrador'
+  end
+end
