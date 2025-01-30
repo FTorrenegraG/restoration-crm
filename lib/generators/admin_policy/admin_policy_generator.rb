@@ -7,7 +7,7 @@ class AdminPolicyGenerator < Rails::Generators::NamedBase
     resource_path = File.join("app/admin", "#{file_name.pluralize}.rb")
 
     if File.exist?(resource_path)
-      puts "⚠️ El recurso ActiveAdmin ya existe: #{resource_path}"
+      puts "⚠️ ActiveAdmin resource already exists: #{resource_path}"
       add_pundit_to_existing_resource(resource_path)
     else
       generate "active_admin:resource", class_name
@@ -19,10 +19,10 @@ class AdminPolicyGenerator < Rails::Generators::NamedBase
     policy_path = File.join("app/policies", "#{file_name}_policy.rb")
     
     if File.exist?(policy_path)
-      puts "⚠️ La política ya existe: #{policy_path}"
+      puts "⚠️ Policy already exists: #{policy_path}"
     else
       template "policy.rb.erb", policy_path
-      puts "✅ Política creada: #{policy_path}"
+      puts "✅ Policy created: #{policy_path}"
     end
   end
 
@@ -31,9 +31,9 @@ class AdminPolicyGenerator < Rails::Generators::NamedBase
   def add_pundit_to_existing_resource(resource_path)
     content = File.read(resource_path)
 
-    # Verificar si ya tiene un `controller do`
+    # Check if the resource already has a `controller do` block
     unless content.match?(/controller\s+do/)
-      puts "➕ Agregando Pundit a #{resource_path}"
+      puts "➕ Adding Pundit authorization to #{resource_path}"
 
       controller_block = <<~RUBY
 
@@ -50,7 +50,21 @@ class AdminPolicyGenerator < Rails::Generators::NamedBase
 
       File.open(resource_path, "a") { |file| file.puts(controller_block) }
     else
-      puts "✅ El resource ya tiene un controller, no se modificará."
+      puts "✅ The resource already has a controller block, skipping modification."
+    end
+
+    # Add menu visibility condition if it's not already present
+    unless content.match?(/menu\s+if:/)
+      puts "➕ Adding menu visibility condition to #{resource_path}"
+
+      menu_condition = <<~RUBY
+
+        menu if: proc { authorized?(:index, resource_class) }
+      RUBY
+
+      File.open(resource_path, "a") { |file| file.puts(menu_condition) }
+    else
+      puts "✅ The resource already has a menu visibility condition, skipping modification."
     end
   end
 end
