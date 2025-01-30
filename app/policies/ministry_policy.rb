@@ -1,4 +1,4 @@
-class UserPolicy
+class MinistryPolicy
   attr_reader :user, :record
 
   def initialize(user, record)
@@ -34,7 +34,7 @@ class UserPolicy
     user_has_permission?
   end
 
-  Scope = Scopes::UserScope
+  Scope = Scopes::MinistryScope
 
   private
 

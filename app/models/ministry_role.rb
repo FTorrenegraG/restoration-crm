@@ -8,6 +8,13 @@ class MinistryRole < ApplicationRecord
 
   before_validation :generate_uni_key
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "description", "id", "id_value", "ministry_id", "name", "uni_key", "updated_at"]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    ["ministry", "ministry_sub_roles", "user_ministry_roles"]
+  end
+
   private
 
   def generate_uni_key
