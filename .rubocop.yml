@@ -16,6 +16,8 @@ AllCops:
     - bin/**/*
     - 'vendor/**/*'
     - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
 # Naming/FileName configures the naming of files.
 Naming/FileName:
   Enabled: true
