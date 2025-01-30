@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :alerts, dependent: :destroy
   has_many :availabilities, dependent: :destroy
   has_many :user_ministry_roles, dependent: :destroy
+  has_many :ministry_roles, through: :user_ministry_roles
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 

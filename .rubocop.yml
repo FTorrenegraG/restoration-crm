@@ -18,6 +18,7 @@ AllCops:
     - 'node_modules/**/*'
     - 'config/**/*'
     - 'db/**/*'
+    - 'lib/**/*'
 # Naming/FileName configures the naming of files.
 Naming/FileName:
   Enabled: true

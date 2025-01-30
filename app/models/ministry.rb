@@ -7,6 +7,6 @@ class Ministry < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     # Return an array of attribute names that should be searchable
     # Example:
-    ["created_at", "description", "id", "name", "super_ministry", "updated_at"]
+    [ 'created_at', 'description', 'id', 'name', 'super_ministry', 'updated_at' ]
   end
 end
