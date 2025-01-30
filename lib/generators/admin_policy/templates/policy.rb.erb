@@ -14,6 +14,14 @@ class <%= class_name %>Policy
     user_has_permission?
   end
 
+  def new?
+    create?
+  end
+
+  def edit?
+    update?
+  end
+
   def create?
     user_has_permission?
   end
