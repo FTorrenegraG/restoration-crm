@@ -51,8 +51,6 @@ gem 'sassc'
 
 # Plus integrations with:
 gem 'devise'
-gem 'cancancan'
-gem 'draper'
 gem 'pundit'
 
 group :development, :test do
