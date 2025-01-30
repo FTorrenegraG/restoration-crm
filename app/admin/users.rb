@@ -1,16 +1,14 @@
 ActiveAdmin.register User do
-# menu if: proc { authorized?(current_user, :index, resource_class) }
 
+  controller do
+    before_action :authorize_admin
 
-controller do
-  before_action :authorize_admin
+    private
 
-  private
-
-  def authorize_admin
-    authorize resource_class
+    def authorize_admin
+      authorize resource_class
+    end
   end
-end
 
   permit_params :email, :password, :password_confirmation
 

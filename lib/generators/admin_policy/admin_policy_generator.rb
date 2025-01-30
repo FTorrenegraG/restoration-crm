@@ -56,22 +56,6 @@ class AdminPolicyGenerator < Rails::Generators::NamedBase
       puts '✅ The resource already has a controller block, skipping modification.'
     end
 
-    # Ensure `menu if:` condition exists
-    unless content.include?('menu if:')
-      puts '➕ Adding menu visibility condition'
-      content.sub!(/ActiveAdmin\.register .* do/) do |match|
-        modified = true
-        <<~RUBY
-          #{match}
-
-          menu if: proc { authorized?(:index, resource_class) }
-        RUBY
-      end
-    else
-      puts '✅ The resource already has a menu visibility condition, skipping modification.'
-    end
-
-    # Save only if modifications were made
     if modified
       File.write(resource_path, content)
       puts "✅ Resource updated successfully: #{resource_path}"
