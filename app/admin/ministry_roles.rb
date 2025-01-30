@@ -1,15 +1,5 @@
 ActiveAdmin.register MinistryRole do
 
-controller do
-  before_action :authorize_admin
-
-  private
-
-  def authorize_admin
-    authorize resource_class
-  end
-end
-
   # Specify parameters which should be permitted for assignment
   permit_params :ministry_id, :name, :description, :uni_key
 

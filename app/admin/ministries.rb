@@ -1,16 +1,5 @@
 ActiveAdmin.register Ministry do
 
-controller do
-  before_action :authorize_admin
-
-  private
-
-  def authorize_admin
-    authorize resource_class
-  end
-end
-
-
   # Specify parameters which should be permitted for assignment
   permit_params :name, :description, :super_ministry
 
