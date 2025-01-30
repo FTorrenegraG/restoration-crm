@@ -1,4 +1,3 @@
-# app/policies/active_admin/page_policy.rb
 module ActiveAdmin
   class PagePolicy
     attr_reader :user, :record
