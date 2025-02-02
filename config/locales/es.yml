@@ -1,0 +1,188 @@
+es:
+  date:
+    formats:
+      default: "%d/%m/%Y"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+  activerecord:
+    models:
+      alert: "Alerta"
+      assignment: "Asignación"
+      availability: "Disponibilidad"
+      event: "Evento"
+      ministry: "Ministerio"
+      ministry_role: "Rol de Ministerio"
+      ministry_sub_role: "Subrol de Ministerio"
+      song_event: "Evento de Canción"
+      song: "Canción"
+      user_ministry_role: "Rol de Usuario en Ministerio"
+      user_profile: "Perfil de Usuario"
+      user: "Usuario"
+    attributes:
+      alert:
+        user_id: "ID de Usuario"
+        event_id: "ID de Evento"
+        message: "Mensaje"
+        status: "Estado"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      assignment:
+        event_id: "ID de Evento"
+        user_id: "ID de Usuario"
+        role: "Rol"
+        status: "Estado"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      availability:
+        user_id: "ID de Usuario"
+        start_datetime: "Fecha y hora de inicio"
+        end_datetime: "Fecha y hora de fin"
+        reason: "Razón"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      event:
+        name: "Nombre"
+        start_datetime: "Fecha y hora de inicio"
+        end_datetime: "Fecha y hora de fin"
+        location: "Ubicación"
+        description: "Descripción"
+        status: "Estado"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      ministry:
+        name: "Nombre"
+        description: "Descripción"
+        super_ministry: "Super Ministerio"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      ministry_role:
+        ministry_id: "ID de Ministerio"
+        name: "Nombre"
+        description: "Descripción"
+        uni_key: "Clave Única"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      ministry_sub_role:
+        ministry_role_id: "ID de Rol de Ministerio"
+        name: "Nombre"
+        description: "Descripción"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      song_event:
+        event_id: "ID de Evento"
+        song_id: "ID de Canción"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      song:
+        title: "Título"
+        performer: "Intérprete"
+        key: "Tonalidad"
+        song_type: "Tipo de Canción"
+        reference_link: "Enlace de Referencia"
+        lyrics: "Letra"
+        sheet_music: "Partitura"
+        vocals: "Voces"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      user_ministry_role:
+        user_id: "ID de Usuario"
+        ministry_id: "ID de Ministerio"
+        ministry_role_id: "ID de Rol de Ministerio"
+        ministry_sub_role_id: "ID de Subrol de Ministerio"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      user_profile:
+        user_id: "ID de Usuario"
+        first_name: "Nombre"
+        last_name: "Apellido"
+        birth_date: "Fecha de Nacimiento"
+        casa_r: "Casa R"
+        other_details: "Otros Detalles"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+      user:
+        email: "Correo Electrónico"
+        phone_number: "Número de Teléfono"
+        encrypted_password: "Contraseña Encriptada"
+        reset_password_token: "Token de Restablecimiento de Contraseña"
+        reset_password_sent_at: "Fecha de Envío de Restablecimiento"
+        remember_created_at: "Fecha de Recuerdo de Sesión"
+        created_at: "Creado el"
+        updated_at: "Actualizado el"
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "no puede estar en blanco"
+              taken: "ya está registrado"
+              invalid: "no es un correo electrónico válido"
+            phone_number:
+              blank: "no puede estar en blanco"
+              too_short: "es demasiado corto"
+            password:
+              blank: "no puede estar en blanco"
+              too_short: "es demasiado corta (mínimo %{count} caracteres)"
+        event:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+            start_datetime:
+              blank: "debe tener una fecha de inicio"
+            end_datetime:
+              blank: "debe tener una fecha de finalización"
+        song:
+          attributes:
+            title:
+              blank: "no puede estar en blanco"
+            performer:
+              blank: "debe tener un intérprete"
+            key:
+              blank: "debe indicar la tonalidad"
+        assignment:
+          attributes:
+            event_id:
+              blank: "debe estar asociado a un evento"
+            user_id:
+              blank: "debe estar asociado a un usuario"
+            role:
+              blank: "debe tener un rol asignado"
+        ministry:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+              taken: "ya existe un ministerio con este nombre"
+        ministry_role:
+          attributes:
+            name:
+              blank: "no puede estar en blanco"
+              taken: "ya existe un rol con este nombre en el ministerio"
+        user_profile:
+          attributes:
+            first_name:
+              blank: "no puede estar en blanco"
+            last_name:
+              blank: "no puede estar en blanco"
+            birth_date:
+              blank: "debe especificar la fecha de nacimiento"
+            casa_r:
+              blank: "debe especificar la Casa R"
+
+      messages:
+        blank: "no puede estar en blanco"
+        taken: "ya está en uso"
+        invalid: "no es válido"
+        too_short: "es demasiado corto (mínimo %{count} caracteres)"
+        too_long: "es demasiado largo (máximo %{count} caracteres)"
+        confirmation: "no coincide con la confirmación"
+        accepted: "debe ser aceptado"
+        not_a_number: "debe ser un número"
+        greater_than: "debe ser mayor que %{count}"
+        greater_than_or_equal_to: "debe ser mayor o igual a %{count}"
+        less_than: "debe ser menor que %{count}"
+        less_than_or_equal_to: "debe ser menor o igual a %{count}"
+        even: "debe ser un número par"
+        odd: "debe ser un número impar"
+        inclusion: "no está incluido en la lista"
+        exclusion: "está reservado y no puede ser utilizado"

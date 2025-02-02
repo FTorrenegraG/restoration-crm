@@ -1,0 +1,12 @@
+es:
+  active_admin:
+    dashboard: "Panel de Control"
+    logout: "Cerrar sesión"
+    login: "Iniciar sesión"
+    site_title: "Restoration CRM"
+    view: "Ver"
+    edit: "Editar"
+    delete: "Eliminar"
+    new_model: "Nuevo %{model}"
+    save: "Guardar"
+    cancel: "Cancelar"
