@@ -1,12 +1,12 @@
 es:
   active_admin:
-    dashboard: "Panel de Control"
     logout: "Cerrar sesión"
-    login: "Iniciar sesión"
-    site_title: "Restoration CRM"
-    view: "Ver"
-    edit: "Editar"
-    delete: "Eliminar"
-    new_model: "Nuevo %{model}"
-    save: "Guardar"
-    cancel: "Cancelar"
+    songs:
+      show:
+        no_reference_link: "No hay enlace de referencia"
+        no_lyrics: "No hay letra disponible"
+        no_sheet_music: "No hay partitura disponible"
+        no_vocals: "No hay voces disponibles"
+        view_lyrics: "Ver letra"
+        view_sheet_music: "Ver partitura"
+        view_vocals: "Ver voces"

@@ -7,18 +7,42 @@ es:
       default: "%d/%m/%Y %H:%M"
   activerecord:
     models:
-      alert: "Alerta"
-      assignment: "Asignación"
-      availability: "Disponibilidad"
-      event: "Evento"
-      ministry: "Ministerio"
-      ministry_role: "Rol de Ministerio"
-      ministry_sub_role: "Subrol de Ministerio"
-      song_event: "Evento de Canción"
-      song: "Canción"
-      user_ministry_role: "Rol de Usuario en Ministerio"
-      user_profile: "Perfil de Usuario"
-      user: "Usuario"
+      alert: 
+        one: "Alerta"
+        other: "Alertas"
+      assignment: 
+        one: "Asignación"
+        other: "Asignaciones"
+      availability: 
+        one: "Disponibilidad"
+        other: "Disponibilidades"
+      event: 
+        one: "Evento"
+        other: "Eventos"
+      ministry: 
+        one: "Ministerio"
+        other: "Ministerios"
+      ministry_role: 
+        one: "Rol de Ministerio"
+        other: "Roles de Ministerio"
+      ministry_sub_role: 
+        one: "Subrol de Ministerio"
+        other: "Subroles de Ministerio"
+      song_event: 
+        one: "Canción de evento"
+        other: "Canciónes de evento"
+      song:
+        one: "Canción"
+        other: "Canciones"
+      user_ministry_role: 
+        one: "Rol de Usuario en Ministerio"
+        other: "Roles de Usuario en Ministerio"
+      user_profile: 
+        one: "Perfil de Usuario"
+        other: "Perfiles de Usuario"
+      user: 
+        one: "Usuario"
+        other: "Usuarios"
     attributes:
       alert:
         user_id: "ID de Usuario"
