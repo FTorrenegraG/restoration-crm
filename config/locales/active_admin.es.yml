@@ -10,3 +10,13 @@ es:
         view_lyrics: "Ver letra"
         view_sheet_music: "Ver partitura"
         view_vocals: "Ver voces"
+    flash:
+      success:
+        create: "El registro se ha creado exitosamente."
+        update: "Los cambios se han guardado correctamente."
+        destroy: "El registro se ha eliminado correctamente."
+      error:
+        create: "Hubo un error al intentar crear el registro."
+        update: "No se pudieron guardar los cambios."
+        destroy: "No se pudo eliminar el registro."
+        
