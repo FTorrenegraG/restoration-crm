@@ -47,6 +47,8 @@ gem 'activeadmin', '4.0.0.beta15'
 gem 'sprockets-rails'
 gem 'cssbundling-rails'
 gem 'sassc'
+gem 'flatpickr'
+
 
 gem 'rails-i18n', '~> 8.0.0'
 

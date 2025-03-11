@@ -135,6 +135,7 @@ GEM
       factory_bot (~> 6.5)
       railties (>= 5.0.0)
     ffi (1.17.1)
+    flatpickr (4.6.13.1)
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
@@ -434,6 +435,7 @@ DEPENDENCIES
   debug
   devise
   factory_bot_rails
+  flatpickr
   importmap-rails
   jbuilder
   kamal
