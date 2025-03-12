@@ -112,9 +112,15 @@ document.addEventListener('DOMContentLoaded', function () {
   // Actualizar inputs ocultos al cargar la página
   updateHiddenInputs();
 });
+import "flatpickr"
 document.addEventListener('DOMContentLoaded', function () {
   flatpickr(".datepicker", {
     enableTime: true,
     dateFormat: "d-m-Y H:i",
   });
+});
+import "jquery"
+import "select2"
+document.addEventListener("DOMContentLoaded", function () {
+  $(".select2").select2();
 });

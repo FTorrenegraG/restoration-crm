@@ -9,7 +9,10 @@ class Event < ApplicationRecord
 
   accepts_nested_attributes_for :songs
 
+  enum :status, { draft: 0, assigned: 1, completed: 2, finished: 3, cancelled: 4 }
+  
   attr_accessor :song_search, :search_results, :selected_song_ids
+  
 
   def self.ransackable_attributes(auth_object = nil)
     [ 'created_at', 'description', 'end_datetime', 'id', 'id_value', 'location', 'name', 'start_datetime', 'status',

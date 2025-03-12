@@ -65,11 +65,11 @@ ActiveAdmin.register Event do
 
     f.inputs 'Event Details' do
       f.input :name
-      f.input :start_datetime, input_html: { class: 'datepicker' }
-      f.input :end_datetime, input_html: { class: 'datepicker' }
+      f.input :start_datetime, as: :string, input_html: { class: 'datepicker' }
+      f.input :end_datetime, as: :string, input_html: { class: 'datepicker' }
       f.input :location
       f.input :description
-      f.input :status
+      f.input :status, as: :select, collection: Event.statuses.keys.map { |s| [s.humanize, s] }, include_blank: false
     end
 
     f.inputs 'Songs' do
