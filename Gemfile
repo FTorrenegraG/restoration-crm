@@ -48,6 +48,7 @@ gem 'sprockets-rails'
 gem 'cssbundling-rails'
 gem 'sassc'
 gem 'flatpickr'
+gem 'js-routes'
 
 
 gem 'rails-i18n', '~> 8.0.0'

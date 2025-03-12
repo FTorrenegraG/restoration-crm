@@ -1,3 +1,4 @@
+import { admin_song_path } from "routes";
 import "jquery";
 import "select2";
 import "flatpickr";
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       data.forEach((song) => {
                           const row = document.createElement('tr');
                           row.innerHTML = `
-                              <td>${song.title}</td>
+                              <td><a href="${admin_song_path(song.id)}" target="_blank">${song.title}</a></td>
                               <td>${song.performer}</td>
                               <td>${song.song_type}</td>
                               <td>${song.key}</td>
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
               const selectedTbody = selectedSongsContainer.querySelector('tbody');
               const row = document.createElement('tr');
               row.innerHTML = `
-                  <td>${songTitle}</td>
+                  <td><a href="${admin_song_path(songId)}" target="_blank">${songTitle}</a></td>
                   <td>${songPerformer}</td>
                   <td>${songType}</td>
                   <td>${songKey}</td>
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
               `;
       
               selectedTbody.appendChild(row);
-              updateHiddenInputs(); // Actualiza los inputs ocultos con los IDs de las canciones
+              updateHiddenInputs();
           }
         });
       
