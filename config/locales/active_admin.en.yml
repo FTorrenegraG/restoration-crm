@@ -1,11 +1,30 @@
 en:
   active_admin:
+    remove_button: 'Remove'
+    add_button: 'Add'
+
+    events:
+      form:
+        details: 'Event Details'
+
+    logout: "Logout"
+
     songs:
       show:
-        no_reference_link: "No reference link"
+        no_reference_link: "No reference link available"
         no_lyrics: "No lyrics available"
         no_sheet_music: "No sheet music available"
         no_vocals: "No vocals available"
         view_lyrics: "View lyrics"
         view_sheet_music: "View sheet music"
         view_vocals: "View vocals"
+
+    flash:
+      success:
+        create: "Record created successfully."
+        update: "Changes have been saved successfully."
+        destroy: "Record has been deleted successfully."
+      error:
+        create: "There was an error trying to create the record."
+        update: "Changes could not be saved."
+        destroy: "Record could not be deleted."

@@ -2,47 +2,45 @@ es:
   date:
     formats:
       default: "%d/%m/%Y"
-
   time:
     formats:
       default: "%d/%m/%Y %H:%M"
-
   activerecord:
     models:
-      alert:
+      alert: 
         one: "Alerta"
         other: "Alertas"
-      assignment:
+      assignment: 
         one: "Asignación"
         other: "Asignaciones"
-      availability:
+      availability: 
         one: "Disponibilidad"
         other: "Disponibilidades"
-      event:
+      event: 
         one: "Evento"
         other: "Eventos"
-      ministry:
+      ministry: 
         one: "Ministerio"
         other: "Ministerios"
-      ministry_role:
+      ministry_role: 
         one: "Rol de Ministerio"
         other: "Roles de Ministerio"
-      ministry_sub_role:
+      ministry_sub_role: 
         one: "Subrol de Ministerio"
         other: "Subroles de Ministerio"
-      song_event:
+      song_event: 
         one: "Canción de evento"
-        other: "Canciones de evento"
+        other: "Canciónes de evento"
       song:
         one: "Canción"
         other: "Canciones"
-      user_ministry_role:
+      user_ministry_role: 
         one: "Rol de Usuario en Ministerio"
         other: "Roles de Usuario en Ministerio"
-      user_profile:
+      user_profile: 
         one: "Perfil de Usuario"
         other: "Perfiles de Usuario"
-      user:
+      user: 
         one: "Usuario"
         other: "Usuarios"
     attributes:
@@ -136,7 +134,6 @@ es:
         remember_created_at: "Fecha de Recuerdo de Sesión"
         created_at: "Creado el"
         updated_at: "Actualizado el"
-
     errors:
       models:
         user:
@@ -217,7 +214,6 @@ es:
   custom_panels:
     event_songs: 'Canciones Asignadas'
     selected_songs: 'Canciones Seleccionadas'
-    search_songs: 'Búsqueda de Canción'
-    input_search_songs: 'Escribe el nombre de la canción'
-    search_result_songs: 'Resultados de búsqueda'
-    no_songs_associated: 'No hay canciones asociadas con este evento.'
+    search_songs: 'Busqueda de cancion'
+    input_search_songs: 'Escribe nombre de cancion'
+    search_result_songs: 'Resultados de busqueda'

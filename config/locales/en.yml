@@ -1,32 +1,223 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
-  hello: "Hello world"
-    
+  date:
+    formats:
+      default: "%m/%d/%Y"
+
+  time:
+    formats:
+      default: "%m/%d/%Y %H:%M"
+
+  activerecord:
+    models:
+      alert:
+        one: "Alert"
+        other: "Alerts"
+      assignment:
+        one: "Assignment"
+        other: "Assignments"
+      availability:
+        one: "Availability"
+        other: "Availabilities"
+      event:
+        one: "Event"
+        other: "Events"
+      ministry:
+        one: "Ministry"
+        other: "Ministries"
+      ministry_role:
+        one: "Ministry Role"
+        other: "Ministry Roles"
+      ministry_sub_role:
+        one: "Ministry Subrole"
+        other: "Ministry Subroles"
+      song_event:
+        one: "Song Event"
+        other: "Song Events"
+      song:
+        one: "Song"
+        other: "Songs"
+      user_ministry_role:
+        one: "User Role in Ministry"
+        other: "User Roles in Ministry"
+      user_profile:
+        one: "User Profile"
+        other: "User Profiles"
+      user:
+        one: "User"
+        other: "Users"
+    attributes:
+      alert:
+        user_id: "User ID"
+        event_id: "Event ID"
+        message: "Message"
+        status: "Status"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      assignment:
+        event_id: "Event ID"
+        user_id: "User ID"
+        role: "Role"
+        status: "Status"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      availability:
+        user_id: "User ID"
+        start_datetime: "Start Date and Time"
+        end_datetime: "End Date and Time"
+        reason: "Reason"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      event:
+        name: "Name"
+        start_datetime: "Start Date and Time"
+        end_datetime: "End Date and Time"
+        location: "Location"
+        description: "Description"
+        status: "Status"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      ministry:
+        name: "Name"
+        description: "Description"
+        super_ministry: "Super Ministry"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      ministry_role:
+        ministry_id: "Ministry ID"
+        name: "Name"
+        description: "Description"
+        uni_key: "Unique Key"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      ministry_sub_role:
+        ministry_role_id: "Ministry Role ID"
+        name: "Name"
+        description: "Description"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      song_event:
+        event_id: "Event ID"
+        song_id: "Song ID"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      song:
+        title: "Title"
+        performer: "Performer"
+        key: "Key"
+        song_type: "Song Type"
+        reference_link: "Reference Link"
+        lyrics: "Lyrics"
+        sheet_music: "Sheet Music"
+        vocals: "Vocals"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      user_ministry_role:
+        user_id: "User ID"
+        ministry_id: "Ministry ID"
+        ministry_role_id: "Ministry Role ID"
+        ministry_sub_role_id: "Ministry Subrole ID"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      user_profile:
+        user_id: "User ID"
+        first_name: "First Name"
+        last_name: "Last Name"
+        birth_date: "Birth Date"
+        casa_r: "Casa R"
+        other_details: "Other Details"
+        created_at: "Created at"
+        updated_at: "Updated at"
+      user:
+        email: "Email"
+        phone_number: "Phone Number"
+        encrypted_password: "Encrypted Password"
+        reset_password_token: "Reset Password Token"
+        reset_password_sent_at: "Reset Password Sent At"
+        remember_created_at: "Remember Created At"
+        created_at: "Created at"
+        updated_at: "Updated at"
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              blank: "can't be blank"
+              taken: "has already been taken"
+              invalid: "is not a valid email"
+            phone_number:
+              blank: "can't be blank"
+              too_short: "is too short"
+            password:
+              blank: "can't be blank"
+              too_short: "is too short (minimum %{count} characters)"
+        event:
+          attributes:
+            name:
+              blank: "can't be blank"
+            start_datetime:
+              blank: "must have a start date"
+            end_datetime:
+              blank: "must have an end date"
+        song:
+          attributes:
+            title:
+              blank: "can't be blank"
+            performer:
+              blank: "must have a performer"
+            key:
+              blank: "must indicate the key"
+        assignment:
+          attributes:
+            event_id:
+              blank: "must be associated with an event"
+            user_id:
+              blank: "must be associated with a user"
+            role:
+              blank: "must have an assigned role"
+        ministry:
+          attributes:
+            name:
+              blank: "can't be blank"
+              taken: "a ministry with this name already exists"
+        ministry_role:
+          attributes:
+            name:
+              blank: "can't be blank"
+              taken: "a role with this name already exists in the ministry"
+        user_profile:
+          attributes:
+            first_name:
+              blank: "can't be blank"
+            last_name:
+              blank: "can't be blank"
+            birth_date:
+              blank: "must specify a birth date"
+            casa_r:
+              blank: "must specify Casa R"
+
+      messages:
+        blank: "can't be blank"
+        taken: "is already taken"
+        invalid: "is not valid"
+        too_short: "is too short (minimum %{count} characters)"
+        too_long: "is too long (maximum %{count} characters)"
+        confirmation: "doesn't match the confirmation"
+        accepted: "must be accepted"
+        not_a_number: "must be a number"
+        greater_than: "must be greater than %{count}"
+        greater_than_or_equal_to: "must be greater than or equal to %{count}"
+        less_than: "must be less than %{count}"
+        less_than_or_equal_to: "must be less than or equal to %{count}"
+        even: "must be an even number"
+        odd: "must be an odd number"
+        inclusion: "is not included in the list"
+        exclusion: "is reserved and cannot be used"
+
+  custom_panels:
+    event_songs: 'Assigned Songs'
+    selected_songs: 'Selected Songs'
+    search_songs: 'Search Songs'
+    input_search_songs: 'Enter song name'
+    search_result_songs: 'Search Results'
+    no_songs_associated: 'No songs are associated with this event.'

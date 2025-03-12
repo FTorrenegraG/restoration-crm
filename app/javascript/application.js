@@ -1,126 +1,115 @@
+import "jquery";
+import "select2";
+import "flatpickr";
+
 document.addEventListener('DOMContentLoaded', function () {
-  // Elementos clave del DOM
-  const searchInput = document.getElementById('song-search');
-  const searchResults = document.getElementById('search-results');
-  const addButton = document.getElementById('add-song');
-  const selectedSongsList = document.getElementById('selected-songs');
-  const hiddenInputsContainer = document.getElementById('hidden-song-ids');
-
-  if (!searchInput || !searchResults || !addButton || !selectedSongsList || !hiddenInputsContainer) {
-    return; // Salir si falta algún elemento clave
-  }
-
-  // Función para mostrar errores
-  const showError = (message) => {
-    console.error(message);
-    // Puedes implementar un mensaje visual si es necesario
-  };
-
-  // Función para actualizar los inputs ocultos
-  function updateHiddenInputs() {
-    // Limpiar los inputs existentes
-    hiddenInputsContainer.innerHTML = '';
-
-    // Crear nuevos inputs ocultos con los IDs de las canciones seleccionadas
-    Array.from(selectedSongsList.children).forEach((li) => {
-      const songId = li.dataset.song_id;
-
-      if (songId) {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = 'event[song_ids][]'; // Nombre esperado por el servidor
-        input.value = songId;
-        hiddenInputsContainer.appendChild(input);
-      }
+    $('.select2').select2({
+        placeholder: "Seleccione una opción",
+        allowClear: true
     });
-  }
 
-  // Buscar canciones
-  searchInput.addEventListener('input', function () {
-    const searchTerm = searchInput.value.trim();
+    const searchInput = document.getElementById('song-search');
+    const searchResultsContainer = document.getElementById('search-results-container');
+    const selectedSongsContainer = document.getElementById('selected-songs-container');
+    const hiddenInputsContainer = document.getElementById('hidden-song-ids');
 
-    if (searchTerm.length >= 3) {
-      fetch(`/songs?q=${encodeURIComponent(searchTerm)}`)
-        .then((response) => response.json())
-        .then((data) => {
-          searchResults.innerHTML = ''; // Limpiar resultados previos
+    if (searchInput && searchResultsContainer && selectedSongsContainer && hiddenInputsContainer) {
+        const showError = (message) => {
+            console.error(message);
+            alert(message);
+        };
 
-          data.forEach((song) => {
-            const option = document.createElement('option');
-            option.value = song.id;
-            option.text = song.title;
-            searchResults.appendChild(option);
-          });
-        })
-        .catch(() => showError('Error fetching songs.'));
+        function updateHiddenInputs() {
+            hiddenInputsContainer.innerHTML = '';
+            Array.from(selectedSongsContainer.querySelectorAll('tbody tr')).forEach((row) => {
+                const songId = row.querySelector('.remove-song').dataset.songId;
+                if (songId) {
+                    const input = document.createElement('input');
+                    input.type = 'hidden';
+                    input.name = 'event[song_ids][]';
+                    input.value = songId;
+                    hiddenInputsContainer.appendChild(input);
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.trim();
+            const table = searchResultsContainer.querySelector('table');
+            const tbody = table.querySelector('tbody');
+            if (searchTerm.length >= 3) {
+                fetch(`/songs?q=${encodeURIComponent(searchTerm)}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                      tbody.innerHTML = '';
+                      data.forEach((song) => {
+                          const row = document.createElement('tr');
+                          row.innerHTML = `
+                              <td>${song.title}</td>
+                              <td>${song.performer}</td>
+                              <td>${song.song_type}</td>
+                              <td>${song.key}</td>
+                              <td><button class="add-song" data-song-id="${song.id}">+</button></td>
+                          `;
+                          tbody.appendChild(row);
+                      });
+                  })
+                  .catch(() => showError('Error al buscar canciones.'));
+            } else {
+              tbody.innerHTML = '';
+            }
+        });
+
+        searchResultsContainer.addEventListener('click', function (event) {
+          if (event.target.classList.contains('add-song')) {
+              event.preventDefault();
+              const songId = event.target.dataset.songId;
+              const songTitle = event.target.closest('tr').children[0].innerText;
+              const songPerformer = event.target.closest('tr').children[1].innerText;
+              const songType = event.target.closest('tr').children[2].innerText;
+              const songKey = event.target.closest('tr').children[3].innerText;
+      
+              const alreadySelected = Array.from(selectedSongsContainer.querySelectorAll('tbody tr')).some(
+                  (row) => row.querySelector('.remove-song').dataset.songId === songId
+              );
+      
+              if (alreadySelected) {
+                  showError('Esta canción ya está seleccionada.');
+                  return;
+              }
+      
+              const selectedTbody = selectedSongsContainer.querySelector('tbody');
+              const row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${songTitle}</td>
+                  <td>${songPerformer}</td>
+                  <td>${songType}</td>
+                  <td>${songKey}</td>
+                  
+                  <td><button class="remove-song" data-song-id="${songId}">-</button></td>
+              `;
+      
+              selectedTbody.appendChild(row);
+              updateHiddenInputs(); // Actualiza los inputs ocultos con los IDs de las canciones
+          }
+        });
+      
+
+        selectedSongsContainer.addEventListener('click', function (event) {
+            if (event.target.classList.contains('remove-song')) {
+                event.preventDefault();
+                event.target.closest('tr').remove();
+                updateHiddenInputs();
+            }
+        });
+
+        updateHiddenInputs();
+
+        flatpickr(".datepicker", {
+            enableTime: true,
+            dateFormat: "d-m-Y H:i",
+        });
     } else {
-      searchResults.innerHTML = ''; // Limpiar la búsqueda si es corta
+        console.warn('Algunos elementos del DOM no están presentes.');
     }
-  });
-
-  // Añadir canción seleccionada
-  addButton.addEventListener('click', function () {
-    const selectedOption = searchResults.options[searchResults.selectedIndex];
-    if (!selectedOption) {
-      showError('Please select a song.');
-      return;
-    }
-
-    const songId = selectedOption.value;
-    const songTitle = selectedOption.text;
-
-    // Verificar si ya está seleccionada
-    const alreadySelected = Array.from(selectedSongsList.children).some(
-      (li) => li.dataset.song_id === songId
-    );
-    if (alreadySelected) {
-      showError('This song is already selected.');
-      return;
-    }
-
-    // Crear un nuevo elemento en la lista de seleccionadas
-    const li = document.createElement('li');
-    li.dataset.song_id = songId;
-    li.textContent = `${songTitle} `;
-
-    const removeButton = document.createElement('button');
-    removeButton.textContent = 'Remove';
-    removeButton.type = 'button';
-    removeButton.classList.add('remove-song');
-    li.appendChild(removeButton);
-
-    selectedSongsList.appendChild(li);
-
-    // Manejar eliminación del botón "Remove"
-    removeButton.addEventListener('click', function () {
-      li.remove();
-      updateHiddenInputs();
-    });
-
-    // Actualizar inputs ocultos
-    updateHiddenInputs();
-  });
-
-  // Inicializar los botones "Remove" al cargar la página
-  selectedSongsList.querySelectorAll('.remove-song').forEach((button) => {
-    button.addEventListener('click', function () {
-      button.parentElement.remove();
-      updateHiddenInputs();
-    });
-  });
-
-  // Actualizar inputs ocultos al cargar la página
-  updateHiddenInputs();
-});
-import "flatpickr"
-document.addEventListener('DOMContentLoaded', function () {
-  flatpickr(".datepicker", {
-    enableTime: true,
-    dateFormat: "d-m-Y H:i",
-  });
-});
-import "jquery"
-import "select2"
-document.addEventListener("DOMContentLoaded", function () {
-  $(".select2").select2();
 });

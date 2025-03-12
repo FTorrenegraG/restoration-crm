@@ -2,13 +2,10 @@ es:
   active_admin:
     remove_button: 'Remover'
     add_button: 'Añadir'
-
     events:
       form:
         details: 'Detalles del Evento'
-
     logout: "Cerrar sesión"
-
     songs:
       show:
         no_reference_link: "No hay enlace de referencia"
@@ -18,7 +15,6 @@ es:
         view_lyrics: "Ver letra"
         view_sheet_music: "Ver partitura"
         view_vocals: "Ver voces"
-
     flash:
       success:
         create: "El registro se ha creado exitosamente."
@@ -28,3 +24,4 @@ es:
         create: "Hubo un error al intentar crear el registro."
         update: "No se pudieron guardar los cambios."
         destroy: "No se pudo eliminar el registro."
+        
