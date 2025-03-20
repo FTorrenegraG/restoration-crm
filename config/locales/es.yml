@@ -21,6 +21,12 @@ es:
       event:
         one: "Evento"
         other: "Eventos"
+        statuses:
+          draft: "Borrador"
+          assigned: "Asignado"
+          completed: "Completado"
+          finished: "Finalizado"
+          cancelled: "Cancelado"
       ministry:
         one: "Ministerio"
         other: "Ministerios"

@@ -3,11 +3,10 @@ ActiveAdmin.register Event do
 
   filter :name
   filter :location
-  filter :status, as: :select, collection: [ 'Planned', 'Completed', 'Cancelled' ]
+  filter :status, as: :select, collection: -> { Event.statuses.map { |key, v|
+ [ I18n.t("activerecord.models.event.statuses.#{key}", default: key.humanize), v ] } }
   filter :start_datetime, as: :date_range
-  filter :end_datetime, as: :date_range
   filter :created_at, as: :date_range
-  filter :updated_at, as: :date_range
 
   index do
     selectable_column
